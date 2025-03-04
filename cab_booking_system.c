@@ -1,4 +1,27 @@
 #include<stdio.h>
+int login() 
+{
+    char username[20],password[20];
+    char correct_username[]="Varsha1132";
+    char correct_password[]="varsha@16";
+    int attempts=3;
+    while(attempts>0)
+	{
+        printf("Enter Username:");
+        scanf("%s",username);
+        printf("Enter Password:");
+        scanf("%s",password);
+        if(strcmp(username,correct_username)==0 && strcmp(password,correct_password)==0)
+		{
+            return 1;
+        } 
+		else 
+		{
+            printf("Incorrect Username or Password. Attempts left: %d\n", --attempts);
+        }
+    }
+    return 0;
+}
 int fun(float b)
 {
 	int m;
@@ -25,6 +48,11 @@ int fun(float b)
 }
 int main()
 {
+	if(!login())
+	{
+        printf("Too many failed attempts. Exiting.\n");
+        return 0;
+    }
 	int choice,subchoice,p,a;
 	float bill,totalbill,finalbill,v,n,tc,s;
 	printf("1.Telangana\n");
@@ -40,10 +68,10 @@ int main()
 	printf("3.Four Wheeler-Car\n");
 	printf("Choose Mode Of Transportation:");
 	scanf("%d",&p);
-if(p==1)
-	s=18;
+	if(p==1)
+		s=18;
 	if(p==2)
-	s=30;
+		s=30;
 	if(p==3)
 	{
 		printf("\n1.Maruthi Suzuki\tRS.40 per KM\n");
@@ -52,14 +80,14 @@ if(p==1)
 		printf("4.Mahindra\t\tRS.55 per KM\n");
 		printf("Enter Your Cab Choice:");
 		scanf("%d",&a);
-		if(a==1)
-		s=40;
-		if(a==2)
-		s=45;
-		if(a==3)
-		s=50;
+		if(a==1) 	
+			s=40;
+		if(a==2) 
+			s=45;
+		if(a==3) 
+			s=50;
 		if(a==4)
-		s=55;
+			s=55;
 	}
 	switch(choice)
 	{
@@ -86,8 +114,7 @@ if(p==1)
 				case 3:
 					bill=15*s;
 					n=fun(bill);
-					
-totalbill=n+bill;
+					totalbill=n+bill;
 					break;	
 				case 4:
 					bill=20*s;
@@ -131,10 +158,8 @@ totalbill=n+bill;
 					bill=25*s;
 					n=fun(bill);
 					totalbill=n+bill;
-					
-break;
-				
-case 5:
+					break;
+				case 5:
 					bill=30*s;
 					n=fun(bill);
 					totalbill=n+bill;
@@ -176,8 +201,7 @@ case 5:
 				case 5:
 					bill=15*s;
 					n=fun(bill);
-					
-totalbill=n+bill;
+					totalbill=n+bill;
 					break;
 				default:
 					printf("Location Not Available!!");		
@@ -221,8 +245,7 @@ totalbill=n+bill;
 					printf("Location Not Available!!");					
 			}
 			break;
-		
-case 5:
+		case 5:
 			printf("\n1.Coimbatore\t56KM\n");
 			printf("2.Kanchipuram\t17KM\n");
 			printf("3.Vellore\t55KM\n");
@@ -266,7 +289,6 @@ case 5:
 	tc=totalbill*0.05;
 	printf("\n5 Percent GST:%.2f",tc);
 finalbill=totalbill+tc;
-	
 printf("\n\nYour Total Bill Is:%.2f",finalbill);
 	printf("\n--------------\n");
 	printf("\n\nDon't Forget To Rate us!!");
